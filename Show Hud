@@ -1,0 +1,104 @@
+#include <amxmodx>
+#include <engine>
+#include <csx>
+#include <dhudmessage>
+
+#define TASK_COUNTER_ID 1337
+
+new gRoundTime;
+new BombPlant
+
+enum UserStats
+{
+	USER_HP = 0,
+	USER_AP
+}
+
+new bool:g_b_user_hp_hud_blink[33], g_i_user_cache_stats[33][UserStats]
+public plugin_init() {
+	register_plugin("HP TIME AP", "2.4", "<VeCo>")
+	
+	register_event("Health","Event_Health","b")
+	register_event("Battery","Event_Battery","b")
+	
+	new ent = create_entity("info_target")
+	entity_set_string(ent,EV_SZ_classname,"env_hud")
+	entity_set_float(ent,EV_FL_nextthink,get_gametime() + 0.5)
+	
+	register_think("env_hud","env_hud_think")
+	
+	register_logevent("LogeventRoundStart", 2, "1=Round_Start");
+}
+
+public Event_Health(id) g_i_user_cache_stats[id][USER_HP] = get_user_health(id)
+public Event_Battery(id) g_i_user_cache_stats[id][USER_AP] = get_user_armor(id)
+
+public env_hud_think(ent)
+{
+	entity_set_float(ent,EV_FL_nextthink,get_gametime() + 0.5)
+	
+	static i_players[32],i_num, id
+	get_players(i_players,i_num,"a")
+	
+	static i_health,i_armor
+	
+	for(--i_num ; i_num >= 0 ; i_num--)
+	{
+		id = i_players[i_num]
+		
+		i_health = g_i_user_cache_stats[id][USER_HP]
+		i_armor = g_i_user_cache_stats[id][USER_AP]
+		
+		set_dhudmessage(255, 255, 255, 0.01, 0.92, 0, 0.0, 0.5, 0.0, 0.0)
+		show_dhudmessage(id, "HP:           AP:")
+		
+		if(i_health > 30 || !g_b_user_hp_hud_blink[id])
+		{
+			g_b_user_hp_hud_blink[id] = true
+			set_dhudmessage(255, 170, 0, 0.01, 0.92, 0, 0.0, 0.5, 0.0, 0.0)
+		} else {
+			if(i_health <= 10) g_b_user_hp_hud_blink[id] = false
+			set_dhudmessage(255, 0, 0, 0.01, 0.92, 0, 0.0, 0.5, 0.0, 0.0)
+		}
+		show_dhudmessage(id, "     %i",i_health)
+		
+		if(i_armor > 30)
+		{
+			set_dhudmessage(255, 170, 0, 0.01, 0.92, 0, 0.0, 0.5, 0.0, 0.0)
+		} else {
+			set_dhudmessage(255, 0, 0, 0.01, 0.92, 0, 0.0, 0.5, 0.0, 0.0)
+		}
+		show_dhudmessage(id, "                     %i",i_armor)
+	}
+}
+
+public LogeventRoundStart()
+{
+	BombPlant = 0
+	gRoundTime = get_cvar_num("mp_roundtime")*60
+	if(task_exists(TASK_COUNTER_ID))
+		remove_task(TASK_COUNTER_ID);
+	
+	set_task(0.9, "TimeCounter", TASK_COUNTER_ID, "", 0, "b", 0);
+}
+public TimeCounter()
+{
+	if(BombPlant == 0)
+	{
+		gRoundTime--;
+	
+		static Seconds, Minutes;
+	
+		Minutes = gRoundTime / 60;
+		Seconds = gRoundTime % 60;
+	
+		set_dhudmessage(255, 255, 255, -1.0, 0.92, 0, 0.0, 0.9, 0.0, 0.0);
+		show_dhudmessage(0, "%i:%02d", Minutes, Seconds );
+	}
+	else
+		remove_task(TASK_COUNTER_ID);
+}
+public bomb_planted()
+{
+	BombPlant = 1
+}
