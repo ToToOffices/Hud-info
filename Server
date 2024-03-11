@@ -1,0 +1,64 @@
+ [ Furien Remade 2.4f ] Modul vine cu umatoarele actualizari:
+
+^Anti-Furieni^
+- effect de tumbe.
+- animatie parasuta in aripi.
+- scantei + sunete cand dai dmg .
+- abilitatea de tinta precisa a furieni-lor. ( M-> 1-> 3 )
+- Ghost fury: HP & AP maxim + x2 dublujump. ( M-> 1->6 )
+
+In ultimele 60sec este ales un salvator:
+- el primeste defause kit, si aura de a detecta furieni invizibili.
+- la dezamorsarea bombei va primi rezistenta imensa.
+
+^Furieni^
+- Godknife ofera un skin separat +HP & AP.
+- posibilitate 50% de a nu primi dmg. ( M -> 1 -> 4 )
+- abilitate de a te agata pe pereti folosind tasta E.
+
+In ultimele 60sec este ales un distrugator:
+- el are obligatia de a planta bomba.
+- ce-l cu bomba poate merge invizibil apasand CTRL.
+
+[ DeadBox ] La kill aleatoriu pica un box cu diferite iteme. 
+- poti gasi o suma aleatoriu de $ & gold
+- poti pierde o suma aleatorie de bani.
+- poti da peste o fantoma.
+
+[ Magic Wand ] Scrie primul si castigi !
+- poti catiga HP / AP / set grenazi.
+- poti castiga o arma magica.
+
+[ Event: Protect VIP ] Protejeaza VIP-ul !
+- un player este ales aleatoriu din ambele echipe.
+- echipa trebuie sa il protejeze, daca acesta moare echipa va pierde.
+
+[ System Quest ] Alege misiunea.
+- un sistem cu diferite misiuni pe care daca le termini vei fi rasplatit.
+
+[ Furien & Anti-Furien Class ] M -> 6
+- fiecare classa o deblochezi facand kill-uri.
+- fiecare classa dispune de o abilitate.
+
+[ Power system ] M -> 3
+- adunand puncte poti creste in abilitati. ( attak / dmg )
+
+[ Weapons CSO ] Meniu arme classice cat si cso: 
+- acest meniu contine diferite arme pentru playeri cat si un submeniu pentru VIP.
+- pentru cei VIP armele sunt gratis.
+
+[ VIP ] 
+- experienta si dublu dolari in orice eveniment al jocului.
+- acces la arme speciale cso din meniu. ( /arme )
+- meniu cu diverse iteme. ( teleport, jetpack, hook, s.a.m.d )
+- dmg marit cu 5%
+- event de la orele 19:00 pana la 23:00
+
+Comenzi playeri:
+/rs
+/who
+/class
+/arme
+/unstuck
+/donate - nick - suma
+/quest ( alege misiunea )
