@@ -1,0 +1,55 @@
+Salut, am sa prezint un tutorial intreg cum si ce faci pe server ca un jucator nou.
+La prima conectare primesti urmatoarele: 
+Nivel: 1 Puncte: 10​​ In total sunt 15 nivele pe server.
+Nivelele au scopul de a putea selecta o clasa noua.
+Clasele se pot accesa cu comanda in chat "/class". Avansarea pe nivele consta in obiectivul de a ucide constant inamici [se ofera 1 punct si 1 experienta pentru fiecare ucidere].
+Pe server se desfasoara 2 tipuri de evenimente:
+Round Event Se alege unul dintre cele 3 evenimente puse la dispozitie [disponibil prin vot]:
+Discount Map
+Double Map
+Presents Map 
+Pentru a avea acces la detaliile amanuntite despre acest tip de eveniment scrii in chat "/event".
+Al 2-lea tip de eveniment se desfasoara o data la 4 runde.
+Ele sunt urmatoarele:
+Snowball Event - toti jucatorii primesc grenade incontinuu iar scopul este sa ucizi toti inamicii
+Cold Event - jocul se desfasoara normal doar ca frigul iti scade viata la anumite secunde.
+Candy Event - toti jucatorii primesc lame si hook [bind tasta +hook] iar scopul este sa ucizi toti inamicii
+Ice Gun Event - toti jucatorii primesc arme de gheata, daca stai pe loc si schimbi arma in cutit primesti invizibilitate, scopul este de a ucide toti inamicii
+Teleport Event - jocul se desfasoara normal, doar ca ai abilitatea de a te teleporta [bind tasta teleport].
+Protect the God - este ales aleatoriu la fiecare echipa un lider, iar acesta are 250 viata, restul 50, in caz ca liderul moare, echipa pierde, daca alt jucator moare, reinvie automat
+Santa's Dream - este ales aleatoriu din toti jucatorii un terorist [grinch] iar acesta primeste lama,
+restul de jucatori li se preia accesul la toate armele iar acestia trebuie sa gaseasca bradutii care sunt spawnati aleatoriu pe harta,
+grinch va vaneaza in acest timp, in cazul in care ati gasit toti bradutii, va duceti la mos craciun sa va luati cutitul si sa-l razbunati pe grinch.
+Exista 3 tipuri speciale de magazine: ele sunt deschise cu comanda pe chat "/items"
+Primul: Echipament extra - continut: [atentie, daca se desfasoara evenimentul Discount, preturile la acest magazin sunt injumatatite]
+He Grenade - 6 puncte
+50 HP - 10 puncte
+50 AP - 8 puncte
+Flash Bang - 4 puncte
+Frost nade - 8 puncte
+Reflect - 32 puncte [acesta reflecta 25% din daunele primite la atacator]
+Magazinul de mai sus nu poate fi folosit in timpul evenimentelor de runda.
+Al 2 lea magazin: Iteme permanente 1 - continut:
+Reward Kill - 5000 puncte [primesti un bonus aleatoriu la ucidere] 
+Damage + 10 - 1250 puncte [daunele iti sunt marite cu 10]
+Chance to evade - 4000 puncte [ai sansa de 25% sa eviti daunele inamicilor]
+Revenge Reward - 1500 puncte [primesti un bonus in cazul in care omori pe ultimul care te-a ucis pe tine]
+Aceste iteme permanente se salveaza pe numele dvs.
+Al 3 lea magazin: Iteme permanente 2 - continut:
+Frost Sword - 3000 puncte [ sansa de a ingheta un inamic ]
+Frost Nade Spawn - 1200 puncte [ primesti un frost nade la fiecare spawn ]
+Pet - 5000 puncte [ te urmareste un animalut dragut mereu ]
+La fel ca in magazinul precedent, aceste iteme se stocheaza in contul tau. Pe harta veti gasi anumite cadouri, din ele poti primi urmatoarele puteri pasive suplimentare:
+Regenerare - 5 HP la fiecare 5 secunde
+Lovituri critice - sansa la o lovitura critica [daune 1.5x]
+Agilitate - agilitatea iti este scazuta la 0.5
+Tank - primesti 200 HP si vei primi daune injumatatite dar si viteza ta va fi mai scazuta 
+Rapid - primesti viteza de miscare suplimentara
+Asasin - sansa de a provoca daune suplimentare 1.5x cu lama si viteza ta de miscare este crescuta
+Sangeros - primesti 3 HP pentru fiecare dauna provocata Aceste bonusuri nu se salveaza si le pierzi la deces.
+In rundele normale un jucator este ales lider de la fiecare echipa, iar acesta primeste bonus de HP si AP.
+Daca acesta este omorat, la toti jucatorii le scad potentialul de a castiga runda scazandu-le la toti jucatorii din echipa cu 25% viata.
+La deces el scapa un brad [santa] sau un om de zapada [grinch], acesta daca este atins de catre un coechipier sunt sanse de 50% sa reinvie liderul. 
+Pentru a vedea cate ore joci pe server scrii pe chat comanda "/ore", iar la fiecare ora activa pe server primesti un bonus de 100 de puncte.
+Daca consideri ca nu ai avut un limbaj destul de decent poti scrie /status sa vezi exact de cate ori ai luat GAG pe server, cate abateri ai si orele jucate.
+Va dorim distractie placuta pe server !
