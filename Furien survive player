@@ -1,0 +1,108 @@
+/*
+   Credite:
+   
+      cyby -  este ideea lui, am vazuto la el pe server :)
+      C0sm1n - register cvar
+      NicutaMM | Cstrike - thanks for Update
+*/
+
+#include <amxmodx>
+#include <cstrike>
+#include <fakemeta_util>
+#include <hamsandwich>
+
+#pragma semicolon 1
+
+
+new const PLUGIN[] = "Furien: Random Player Savior";
+new const VERSION[] = "1.2";
+new const AUTHOR[] = "Adventx";
+
+new bool: HaveDefuseKit[33];
+
+new pcvar_time, CvarHP, CvarAP;
+
+public plugin_init()
+{
+   register_plugin(PLUGIN, VERSION, AUTHOR);
+   
+   pcvar_time = register_cvar("random_time","30.0");
+   CvarHP = register_cvar("savivor_hp","255");
+   CvarAP = register_cvar("savivor_ap", "255");
+   
+   register_logevent("RoundStart", 2, "1=Round_Start");
+   RegisterHam(Ham_Spawn, "player", "hamPlayerSpawnPost", true );
+}
+
+public RoundStart(id)
+{
+   set_task(get_pcvar_float(pcvar_time), "RandomPlayer", id);
+}
+
+public hamPlayerSpawnPost(id)
+{
+   fm_set_user_rendering(id);
+   
+   if(HaveDefuseKit[id])
+   {
+      
+      HaveDefuseKit[id] = false;
+      cs_set_user_defuse(id, 0);   
+   }
+}
+
+public RandomPlayer()
+{
+   new iPlayers[32], iNum;
+   get_players(iPlayers, iNum, "c");
+
+   new iRandomPlayer = iPlayers[random_num(0, iNum -1)];
+
+   if(is_user_alive(iRandomPlayer) && get_user_team(iRandomPlayer) == 2 )
+   {
+      ChatColor(0, "!g[AntiFurien] !t%s !n was chosen savior Christmas, he gets !g1 HE Grenade, %d HP, %d AP !nand !gDefuse Kit", get_name(iRandomPlayer), CvarHP, CvarAP);
+      
+      fm_set_user_health(iRandomPlayer, get_pcvar_num( CvarHP ) );
+      fm_set_user_armor(iRandomPlayer, get_pcvar_num( CvarAP ) );
+      fm_give_item(iRandomPlayer, "weapon_hegrenade");
+      
+      HaveDefuseKit[iRandomPlayer] = true;
+      cs_set_user_defuse(iRandomPlayer, 1);
+      
+      fm_set_user_rendering(iRandomPlayer, kRenderFxGlowShell, 0,255,255, kRenderGlow, 25);
+   }
+}
+
+stock get_name( id )
+{
+   new name[32];
+   get_user_name(id, name, sizeof (name) -1);
+   
+   return name;
+}
+
+stock ChatColor(const id, const input[], any:...)
+{
+        new count = 1, players[32];
+        static msg[191];
+        vformat(msg, 190, input, 3);
+       
+        replace_all(msg, 190, "!g", "^4"); // Green Color
+        replace_all(msg, 190, "!n", "^1"); // Default Color
+        replace_all(msg, 190, "!t", "^3"); // Team Color
+        replace_all(msg, 190, "!t2", "^0"); // Team2 Color
+       
+        if (id) players[0] = id; else get_players(players, count, "ch");
+        {
+                for (new i = 0; i < count; i++)
+                {
+                        if (is_user_connected(players))
+                        {
+                                message_begin(MSG_ONE_UNRELIABLE, get_user_msgid("SayText"), _, players);
+                                write_byte(players);
+                                write_string(msg);
+                                message_end();
+                        }
+                }
+        }
+}
